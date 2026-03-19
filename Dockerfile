@@ -69,10 +69,11 @@ COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.
 COPY --from=0 /browser/zig-out/bin/lightpanda /bin/lightpanda
 COPY --from=1 /usr/bin/tini /usr/bin/tini
 
-EXPOSE 9222/tcp
+ENV PORT=9222
+EXPOSE ${PORT}/tcp
 
 # Lightpanda install only some signal handlers, and PID 1 doesn't have a default SIGTERM signal handler.
 # Using "tini" as PID1 ensures that signals work as expected, so e.g. "docker stop" will not hang.
 # (See https://github.com/krallin/tini#why-tini).
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["/bin/lightpanda", "serve", "--host", "0.0.0.0", "--port", "9222", "--log_level", "info"]
+CMD ["/bin/sh", "-c", "/bin/lightpanda serve --host 0.0.0.0 --port ${PORT} --log_level info"]
