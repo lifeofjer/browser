@@ -47,7 +47,7 @@ Due to the nature of Playwright, a script that works with the current version of
 
 Deploy Lightpanda as a headless browser service on [Railway](https://railway.app) with one click:
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template?template=https://github.com/lifeofjer/browser)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/xG3dfx?referralCode=1dF1LX&utm_medium=integration&utm_source=template&utm_campaign=lightpanda)
 
 The service starts a CDP (Chrome DevTools Protocol) server that you can connect to with Puppeteer or Playwright from any other service. The `PORT` environment variable is automatically configured by Railway.
 
