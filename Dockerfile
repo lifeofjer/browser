@@ -58,7 +58,8 @@ RUN zig build -Doptimize=ReleaseFast \
 # build release
 RUN zig build -Doptimize=ReleaseFast \
     -Dsnapshot_path=../../snapshot.bin \
-    -Dprebuilt_v8_path=v8/libc_v8.a
+    -Dprebuilt_v8_path=v8/libc_v8.a \
+    -Dcpu=x86_64
 
 FROM debian:stable-slim
 
