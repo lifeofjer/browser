@@ -2,7 +2,7 @@
 builder = "DOCKERFILE"
 
 [deploy]
-startCommand = "/bin/sh -c '/bin/lightpanda serve --host 0.0.0.0 --port ${PORT:-9222} --advertise-host ${RAILWAY_PUBLIC_DOMAIN} --log-level info'"
+startCommand = "/bin/sh -c 'exec /bin/lightpanda serve --host :: --port \"${PORT:-8080}\" --advertise-host \"${RAILWAY_PRIVATE_DOMAIN:?missing private hostname}\" --log-level info'"
 healthcheckPath = "/json/version"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"

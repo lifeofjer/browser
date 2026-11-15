@@ -25,7 +25,9 @@ RUN curl --fail -L --retry 3 --retry-delay 2 -O https://github.com/jedisct1/mini
     tar xzf minisign-${MINISIG}-linux.tar.gz -C /
 
 # clone lightpanda
-RUN git clone --depth 1 https://github.com/lightpanda-io/browser.git
+RUN git init /browser && \
+    git -C /browser fetch --depth 1 https://github.com/lightpanda-io/browser.git 6df58c2318578bbee733157b5414a8df8a602925 && \
+    git -C /browser checkout --detach FETCH_HEAD
 WORKDIR /browser
 
 # install zig
